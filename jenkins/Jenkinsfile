@@ -1,0 +1,32 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Checkout') {
+            steps {
+                // Check out the source code from the Git repository
+                git 'https://github.com/jenkins-docs/simple-java-maven-app.git'
+            }
+        }
+		
+		stage('Confirm') {
+            steps {
+                input('Do you want to proceed?')
+            }
+        }
+		
+        stage('Build') {
+            steps {
+                // Build the code using Maven
+                sh 'mvn clean install'
+            }
+        }
+
+        stage('Archive Artifacts') {
+            steps {
+                // Archive the JAR file as a build artifact
+                archiveArtifacts artifacts: '**/target/*.jar', allowEmptyArchive: true
+            }
+        }
+    }
+}
