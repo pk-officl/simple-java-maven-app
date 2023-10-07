@@ -1,8 +1,8 @@
 pipeline {
     agent any
     tools {
-        jdk 'JDK 11' // Use the configured JDK installation
-        maven 'Maven 3.8.6' // Use the configured Maven installation
+        jdk 'Java 17' // Use the configured JDK installation
+        maven 'Maven' // Use the configured Maven installation
     }
     stages {
         stage('Checkout') {
