@@ -33,7 +33,7 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-                bat 'docker build -t pkofficl/simple-maven-app .'
+                bat 'docker build -t pkofficl/simple-maven-app -f Dockerfile .'
             }
         }
     }
