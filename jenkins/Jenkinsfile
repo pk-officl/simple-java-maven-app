@@ -34,13 +34,10 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-	    script{
-		    def dockerToken = 'dckr_pat__GkMYSQVLKJyVxCMgZoxvoZ_De4' // Your PAT
-                    echo "Docker Token: $dockerToken" 
-	    }
-                withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_TOKEN')]) {
+            withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_TOKEN')]) {
+	    echo "Docker Token: $DOCKER_TOKEN"
             // Log in to Docker Hub using the API token/secret
-            bat 'echo dckr_pat__GkMYSQVLKJyVxCMgZoxvoZ_De4 | docker login --username pkofficl --password-stdin'
+            bat 'echo $DOCKER_TOKEN | docker login --username pkofficl --password-stdin'
             
             // Build the Docker image and tag it
             bat 'docker build -t pkofficl/simple-maven-app -f Dockerfile .'
