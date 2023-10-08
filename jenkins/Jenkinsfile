@@ -34,8 +34,10 @@ pipeline {
         }
         stage('Docker Build') {
             steps {
-	    def dockerToken = 'dckr_pat__GkMYSQVLKJyVxCMgZoxvoZ_De4' // Your PAT
+	    script{
+		    def dockerToken = 'dckr_pat__GkMYSQVLKJyVxCMgZoxvoZ_De4' // Your PAT
                     echo "Docker Token: $dockerToken" 
+	    }
                 withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_TOKEN')]) {
             // Log in to Docker Hub using the API token/secret
             bat 'echo $DOCKER_TOKEN | docker login --username pkofficl --password-stdin'
