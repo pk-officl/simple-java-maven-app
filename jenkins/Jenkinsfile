@@ -37,7 +37,7 @@ pipeline {
             withCredentials([string(credentialsId: 'docker-hub-credentials', variable: 'DOCKER_TOKEN')]) {
 	    echo "Docker Token: $DOCKER_TOKEN"
             // Log in to Docker Hub using the API token/secret
-            bat 'docker login --username pkofficl --password $DOCKER_TOKEN'
+            bat 'docker login --username pkofficl --password-stdin'
             
             // Build the Docker image and tag it
             bat 'docker build -t pkofficl/simple-maven-app -f Dockerfile .'
