@@ -44,6 +44,7 @@ pipeline {
             // Push the Docker image to Docker Hub
             bat 'docker push pkofficl/simple-maven-app'
             }
+	    }
         }
     }
 }
