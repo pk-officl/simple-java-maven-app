@@ -1,4 +1,4 @@
 FROM openjdk:8
 EXPOSE 8086
-ADD target/simple-maven-app.jar simple-maven-app.jar
-ENTRYPOINT ["java","-jar","/simple-maven-app.jar"]
+ADD target/my-app-1.0-SNAPSHOT.jar my-app-1.0-SNAPSHOT.jar
+ENTRYPOINT ["java","-jar","/my-app-1.0-SNAPSHOT.jar"]
